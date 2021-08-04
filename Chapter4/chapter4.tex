@@ -1,0 +1,38 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Third Chapter **********************************
+%*******************************************************************************
+\chapter{Plan Library}
+
+% **************************** Define Graphics Path **************************
+\ifpdf
+    \graphicspath{{Chapter4/Figs/Raster/}{Chapter4/Figs/PDF/}{Chapter4/Figs/}}
+\else
+    \graphicspath{{Chapter4/Figs/Vector/}{Chapter4/Figs/}}
+\fi
+
+\section{Introduction}
+
+In order for robots like this to become helpful in dynamic and stochastic environments, their reasoning about what to do must combine two qualities: autonomy and speed. They need autonomy in order to be able to decide for themselves how to achieve  their goals, regardless of the situation they are placed in \cite{Ingrand:DeliberationRoboticsSurvey}. They need speedy reasoning so that they can perform in dynamic environments where plans can become unusable if a robot takes too long to synthesise them. Any environment containing people is dynamic, because people act in it, and include the additional constraint that people who interact with robots will not tolerate waiting long for them to respond.
+
+For a long time, robots have been designed using the three layered architecture \cite{Gat:98}, \cite{ambros:88}, \cite{Nasa:3T}, known as the Sense-Plan-Act (SPA) paradigm. The \textit{sensing} component makes sense of real time observations from the environment, and of monitors if observations are consistent with the plan being executed. The \textit{planning} component is tasked with reaching the robot's goals while taking into consideration what the sensing component provides as an initial state. Finally, the \textit{acting} or executing part will put the plan into action by using the robot's actuators. For the remainder of this paper, we shall focus on the \textit{planning} component of the SPA.
+
+One way to ensure that the robot has a high degree of autonomy is by reasoning directly about the state of the environment. Systems that do this are mostly based on STRIPS \cite{Fikes-Nilsson:STRIPS}, and help the robot to come up with a sequence of actions (i.e. plans), from a set of available operators that would satisfy a set of explicit goals given in a planning task.
+%
+Such an approach trades speed for autonomy, because planning with a suitably expressive language --- able, for example, to reason about the duration and cost of actions --- is computationally expensive. The success of a robot is also dependant in the speed of which planning is done (i.e.: the time from which the planning component receives a planning task until it submits the plan for execution). If the robot has a valid plan for a task, but the task is no longer consistent with the current state of the environment (due to the long time taken to create the plan), then it needs to re-plan, restarting the reasoning process. 
+
+Because of these issues, approaches have been developed that make use of predefined plans. One influential family of approaches are those based on the Belief-Desire-Intention (BDI) paradigm \cite{Bratman:BDI}. Systems that are based on the BDI model include PRS \cite{Rao:PRS} and Jason \cite{Bordini:Jason} which have a prescribed Plan Library, comprising a set of plan rules. Each plan rule consists of a \textit{header}, which defines the situation where it is applicable, and a \textit{sequence of actions} that will fulfil the robot's goals. The downside to this approach is that the robot is limited to the behaviours described in the Plan Library, and therefore has less autonomy than a robot that can compute its own plans.
+
+Over the last decades, researchers have introduced task planning into BDI agents \cite{Meneguzzi:PlanningBDI}, where the main focus is planning when there is no available option in the Plan Library. In other words, planning is considered to be a last resort, only to be invoked if necessary.
+
+\section{Plan Libraries for ROSPlan}
+
+Planning is a PSPACE-complete problem \cite{Bylander:Complexity}, heuristic search has proven to be one of the best ways to find solutions in a timely manner. 
+
+\subsection{Plan Selection}
+
+\section*{Study on Pattern Selection}
+
+\section{Related Works}
+
+\section{Summary of Results}
